@@ -47,9 +47,7 @@ class ServerDestination extends DestinationType {
 }
 
 class LeftNavigation extends HookWidget {
-  static const iconFactor = 0.5;
-
-  final double size = 60;
+  final double size = 50;
   final DestinationType selectedDestination;
   final Function(DestinationType) onSelectionChanged;
   final List<Server> servers;
@@ -82,7 +80,7 @@ class LeftNavigation extends HookWidget {
             contentBuilder:
                 (color) => Icon(
                   PhosphorIconsFill.chatCircle,
-                  size: size * iconFactor,
+                  size: size * 0.5,
                   color: color,
                 ),
           ),
@@ -112,7 +110,9 @@ class LeftNavigation extends HookWidget {
                   (color) =>
                       server.iconPath == null
                           ? Text(
-                            _trimServerName(server.name),
+                            server.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(color: color),
                           )
                           : _getServerIcon(server.iconPath!),
@@ -123,11 +123,8 @@ class LeftNavigation extends HookWidget {
             previousSelectedDestination: previousSelectedDestination,
             controller: controller,
             contentBuilder:
-                (color) => Icon(
-                  Icons.add_rounded,
-                  size: size * iconFactor,
-                  color: color,
-                ),
+                (color) =>
+                    Icon(Icons.add_rounded, size: size * 0.6, color: color),
           ),
         ],
       ),
@@ -157,9 +154,6 @@ class LeftNavigation extends HookWidget {
     contentBuilder: contentBuilder,
   );
 }
-
-String _trimServerName(String name) =>
-    name.length > 4 ? "${name.substring(0, 3)}…" : name;
 
 Widget? _getServerIcon(String iconPath) {
   // Todo: implement
