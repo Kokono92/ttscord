@@ -49,7 +49,7 @@ class ServerDestination extends DestinationType {
 class LeftNavigation extends HookWidget {
   static const iconFactor = 0.5;
 
-  final double size = 80;
+  final double size = 60;
   final DestinationType selectedDestination;
   final Function(DestinationType) onSelectionChanged;
   final List<Server> servers;

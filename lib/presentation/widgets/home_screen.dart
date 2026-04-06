@@ -44,16 +44,19 @@ Widget buildMessageRegion(BuildContext context) => ContentRegion(
   title: "メッセージ",
   child: Column(
     children: [
-      FilledButton(
-        onPressed: () {},
-        style: FilledButton.styleFrom(
-          backgroundColor:
-              Theme.of(context).colorScheme.surfaceContainerHighest,
-          foregroundColor: Colors.grey,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [Icon(PhosphorIconsFill.userPlus), Text("フレンドを追加")],
+      Padding(
+        padding: EdgeInsets.only(top: 20),
+        child: FilledButton(
+          onPressed: () {},
+          style: FilledButton.styleFrom(
+            backgroundColor:
+                Theme.of(context).colorScheme.surfaceContainerHighest,
+            foregroundColor: Colors.grey,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Icon(PhosphorIconsFill.userPlus), Text("フレンドを追加")],
+          ),
         ),
       ),
     ],
