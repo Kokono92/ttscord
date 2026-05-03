@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ttscord/presentation/widgets/main_page.dart';
+import 'package:ttscord/router.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,8 +10,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MainPage(),
+    return MaterialApp.router(
+      routerConfig: router,
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
         useMaterial3: true,

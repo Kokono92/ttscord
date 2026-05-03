@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ttscord/presentation/widgets/content_region.dart';
+import 'package:ttscord/uncategorized/presentation/widgets/content_region.dart';
 
 class AddServerRegion extends StatelessWidget {
   const AddServerRegion({super.key});

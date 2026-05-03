@@ -10,7 +10,6 @@ class ContentRegion extends StatelessWidget {
   Widget build(BuildContext context) => Expanded(
     child: Container(
       width: double.infinity,
-      height: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(25)),
         color: Theme.of(context).colorScheme.surfaceContainer,
@@ -22,7 +21,7 @@ class ContentRegion extends StatelessWidget {
             padding: EdgeInsets.only(top: 20, left: 30, right: 30),
             child: Text(title, style: Theme.of(context).textTheme.titleLarge),
           ),
-          child ?? Container(),
+          Expanded(child: child ?? Container()),
         ],
       ),
     ),

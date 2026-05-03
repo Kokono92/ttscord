@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:ttscord/presentation/widgets/content_region.dart';
-import 'package:ttscord/presentation/widgets/long_bar_button.dart';
+import 'package:ttscord/uncategorized/presentation/widgets/content_region.dart';
+import 'package:ttscord/uncategorized/presentation/widgets/long_bar_button.dart';
 
 class MessageRegion extends StatelessWidget {
   const MessageRegion({super.key});
