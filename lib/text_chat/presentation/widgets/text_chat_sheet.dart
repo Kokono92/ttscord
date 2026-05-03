@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ttscord/server/domain/datamodel/server.dart';
+import 'package:ttscord/common/datamodel/channel.dart';
 
 class TextChatSheet extends StatelessWidget {
   final Channel channel;

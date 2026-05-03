@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ttscord/server/domain/datamodel/server.dart';
+import 'package:ttscord/common/datamodel/channel.dart';
+import 'package:ttscord/text_chat/domain/datamodel/chat_message.dart';
+import 'package:ttscord/text_chat/application/usecases/get_messages.dart';
 
 class TextChatScrollView extends StatelessWidget {
   final Channel channel;
@@ -8,6 +10,7 @@ class TextChatScrollView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView();
+    final List<ChatMessage> messages = getMessages(channel);
+    return SingleChildScrollView(child: Column(children: []));
   }
 }

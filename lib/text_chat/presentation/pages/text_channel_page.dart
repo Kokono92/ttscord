@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:ttscord/server/domain/datamodel/server.dart';
+import 'package:ttscord/common/datamodel/channel.dart';
+import 'package:ttscord/text_chat/presentation/widgets/text_chat_scroll_view.dart';
 
 class TextChannelPage extends StatelessWidget {
   final Channel channel;
@@ -10,7 +11,7 @@ class TextChannelPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(context),
-      body: Column(children: [Divider()]),
+      body: Column(children: [Divider(), TextChatScrollView(channel)]),
     );
   }
 

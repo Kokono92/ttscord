@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:ttscord/uncategorized/presentation/pages/main_page.dart';
-import 'package:ttscord/uncategorized/presentation/pages/resgister_page.dart';
+import 'package:ttscord/registration/presentation/pages/register_page.dart';
 
 final router = GoRouter(
   routes: [

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:ttscord/server/domain/datamodel/server.dart';
+import 'package:ttscord/common/datamodel/channel.dart';
 import 'package:ttscord/text_chat/presentation/widgets/text_chat_sheet.dart';
 import 'package:ttscord/utility/extensions.dart';
 
@@ -65,7 +65,7 @@ class JoinVoiceChannelSheet extends StatelessWidget {
 class _VoiceChannelParticipantsIndicator extends StatelessWidget {
   final Channel channel;
 
-  const _VoiceChannelParticipantsIndicator(this.channel, {super.key});
+  const _VoiceChannelParticipantsIndicator(this.channel);
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,7 @@ class _VoiceChannelParticipantsIndicator extends StatelessWidget {
 
 class _ActionMenu extends StatelessWidget {
   final Channel channel;
-  const _ActionMenu(this.channel, {super.key});
+  const _ActionMenu(this.channel);
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +134,7 @@ class _ActionMenu extends StatelessWidget {
 }
 
 class _DummyMicButton extends HookWidget {
-  const _DummyMicButton({super.key});
+  const _DummyMicButton();
 
   @override
   Widget build(BuildContext context) {
@@ -161,7 +161,7 @@ class _DummyMicButton extends HookWidget {
 class _ShowTextChatButton extends StatelessWidget {
   final Channel channel;
 
-  const _ShowTextChatButton(this.channel, {super.key});
+  const _ShowTextChatButton(this.channel);
 
   @override
   Widget build(BuildContext context) {

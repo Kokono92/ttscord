@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:ttscord/common/datamodel/channel.dart';
+import 'package:ttscord/server/domain/datamodel/channel_category.dart';
 import 'package:ttscord/server/domain/datamodel/server.dart';
 import 'package:ttscord/server/presentation/widgets/channel_category_view.dart';
-import 'package:ttscord/server/presentation/widgets/channel_tile.dart';
 import 'package:ttscord/uncategorized/presentation/widgets/content_region.dart';
 import 'package:ttscord/uncategorized/presentation/widgets/long_bar_button.dart';
 

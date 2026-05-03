@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:ttscord/common/datamodel/channel.dart';
 import 'package:ttscord/server/domain/datamodel/server.dart';
 import 'package:ttscord/server/presentation/widgets/join_voice_channel_sheet.dart';
 import 'package:ttscord/text_chat/presentation/pages/text_channel_page.dart';
-import 'package:ttscord/uncategorized/domain/datamodel/user.dart';
+import 'package:ttscord/common/datamodel/user.dart';
 
 class ChannelTile extends StatelessWidget {
   final Channel channel;
@@ -95,7 +96,7 @@ class ChannelTile extends StatelessWidget {
 class _UserIndicator extends StatelessWidget {
   final User user;
 
-  const _UserIndicator(this.user, {super.key});
+  const _UserIndicator(this.user);
 
   @override
   Widget build(BuildContext context) {
