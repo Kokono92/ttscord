@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:ttscord/common/datamodel/channel.dart';
-import 'package:ttscord/server/domain/datamodel/server.dart';
-import 'package:ttscord/server/presentation/widgets/join_voice_channel_sheet.dart';
+import 'package:ttscord/common/domain/datamodel/channel.dart';
+import 'package:ttscord/voice_call/presentation/widgets/join_voice_channel_sheet.dart';
 import 'package:ttscord/text_chat/presentation/pages/text_channel_page.dart';
-import 'package:ttscord/common/datamodel/user.dart';
+import 'package:ttscord/common/domain/datamodel/user.dart';
 
 class ChannelTile extends StatelessWidget {
   final Channel channel;
@@ -107,7 +106,8 @@ class _UserIndicator extends StatelessWidget {
         SizedBox(width: 20, child: CircleAvatar()),
         Text(user.name),
         Spacer(),
-        Icon(Icons.mic, size: 16),
+        if (user.isMicMuted) Icon(Icons.mic, size: 16),
+        if (user.isSpeakerMuted) Icon(Icons.headset_off, size: 16),
       ],
     );
   }

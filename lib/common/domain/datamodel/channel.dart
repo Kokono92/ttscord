@@ -1,5 +1,5 @@
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:ttscord/common/datamodel/user.dart';
+import 'package:ttscord/common/domain/datamodel/user.dart';
 
 part 'channel.mapper.dart';
 

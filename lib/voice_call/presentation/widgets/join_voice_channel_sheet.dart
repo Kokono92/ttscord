@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:ttscord/common/datamodel/channel.dart';
-import 'package:ttscord/text_chat/presentation/widgets/text_chat_sheet.dart';
-import 'package:ttscord/utility/extensions.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:ttscord/common/domain/datamodel/channel.dart';
+import 'package:ttscord/common/presentation/datamodel/conversation_target.dart';
+import 'package:ttscord/voice_call/presentation/pages/voice_call_page.dart';
+import 'package:ttscord/voice_call/presentation/widgets/buttons.dart';
 
 class JoinVoiceChannelSheet extends StatelessWidget {
   final Channel channel;
@@ -87,7 +87,8 @@ class _VoiceChannelParticipantsIndicator extends StatelessWidget {
                   SizedBox(width: 36, child: CircleAvatar()),
                   Text(user.name),
                   Spacer(),
-                  Icon(Icons.mic),
+                  if (user.isMicMuted) Icon(Icons.mic),
+                  if (user.isSpeakerMuted) Icon(Icons.headset_off),
                 ],
               ),
             ),
@@ -103,6 +104,8 @@ class _ActionMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final target = ChannelConversationTarget(channel);
+
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(28),
@@ -115,67 +118,27 @@ class _ActionMenu extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         spacing: 8,
         children: [
-          _DummyMicButton(),
+          DummyMicButton(),
           Expanded(
             child: FilledButton(
               style: FilledButton.styleFrom(
                 backgroundColor: Colors.green,
                 foregroundColor: Colors.white,
+                minimumSize: Size(0, 48),
               ),
-              onPressed: () {},
+              onPressed:
+                  () => Navigator.of(context).push(
+                    PageTransition(
+                      type: PageTransitionType.bottomToTop,
+                      child: VoiceCallPage(target),
+                    ),
+                  ),
               child: Text("ボイスチャンネルに参加"),
             ),
           ),
-          _ShowTextChatButton(channel),
+          ShowTextChatButton(target),
         ],
       ),
-    );
-  }
-}
-
-class _DummyMicButton extends HookWidget {
-  const _DummyMicButton();
-
-  @override
-  Widget build(BuildContext context) {
-    final isMuted = useState(false);
-
-    return IconButton(
-      style: IconButton.styleFrom(
-        backgroundColor:
-            isMuted.value
-                ? Colors.white
-                : Theme.of(context).colorScheme.surfaceContainerHigh,
-        foregroundColor: isMuted.value ? Colors.red : Colors.white,
-      ),
-      onPressed: isMuted.toggleAndNotify,
-      icon: Transform.flip(
-        flipX: true,
-        child: Icon(isMuted.value ? (Icons.mic_off) : Icons.mic),
-      ),
-    );
-  }
-}
-
-// TODO: こいつにも未読バッジはございます
-class _ShowTextChatButton extends StatelessWidget {
-  final Channel channel;
-
-  const _ShowTextChatButton(this.channel);
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      style: IconButton.styleFrom(
-        backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
-        foregroundColor: Colors.white,
-      ),
-      onPressed:
-          () => showBottomSheet(
-            context: context,
-            builder: (context) => TextChatSheet(channel),
-          ),
-      icon: Icon(PhosphorIconsFill.chatCircle),
     );
   }
 }

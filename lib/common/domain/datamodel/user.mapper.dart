@@ -30,15 +30,36 @@ class UserMapper extends ClassMapperBase<User> {
     _$iconPath,
     opt: true,
   );
+  static bool _$isMicMuted(User v) => v.isMicMuted;
+  static const Field<User, bool> _f$isMicMuted = Field(
+    'isMicMuted',
+    _$isMicMuted,
+    opt: true,
+    def: false,
+  );
+  static bool _$isSpeakerMuted(User v) => v.isSpeakerMuted;
+  static const Field<User, bool> _f$isSpeakerMuted = Field(
+    'isSpeakerMuted',
+    _$isSpeakerMuted,
+    opt: true,
+    def: false,
+  );
 
   @override
   final MappableFields<User> fields = const {
     #name: _f$name,
     #iconPath: _f$iconPath,
+    #isMicMuted: _f$isMicMuted,
+    #isSpeakerMuted: _f$isSpeakerMuted,
   };
 
   static User _instantiate(DecodingData data) {
-    return User(name: data.dec(_f$name), iconPath: data.dec(_f$iconPath));
+    return User(
+      name: data.dec(_f$name),
+      iconPath: data.dec(_f$iconPath),
+      isMicMuted: data.dec(_f$isMicMuted),
+      isSpeakerMuted: data.dec(_f$isSpeakerMuted),
+    );
   }
 
   @override
@@ -87,7 +108,12 @@ extension UserValueCopy<$R, $Out> on ObjectCopyWith<$R, User, $Out> {
 
 abstract class UserCopyWith<$R, $In extends User, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  $R call({String? name, String? iconPath});
+  $R call({
+    String? name,
+    String? iconPath,
+    bool? isMicMuted,
+    bool? isSpeakerMuted,
+  });
   UserCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
@@ -98,16 +124,25 @@ class _UserCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, User, $Out>
   @override
   late final ClassMapperBase<User> $mapper = UserMapper.ensureInitialized();
   @override
-  $R call({String? name, Object? iconPath = $none}) => $apply(
+  $R call({
+    String? name,
+    Object? iconPath = $none,
+    bool? isMicMuted,
+    bool? isSpeakerMuted,
+  }) => $apply(
     FieldCopyWithData({
       if (name != null) #name: name,
       if (iconPath != $none) #iconPath: iconPath,
+      if (isMicMuted != null) #isMicMuted: isMicMuted,
+      if (isSpeakerMuted != null) #isSpeakerMuted: isSpeakerMuted,
     }),
   );
   @override
   User $make(CopyWithData data) => User(
     name: data.get(#name, or: $value.name),
     iconPath: data.get(#iconPath, or: $value.iconPath),
+    isMicMuted: data.get(#isMicMuted, or: $value.isMicMuted),
+    isSpeakerMuted: data.get(#isSpeakerMuted, or: $value.isSpeakerMuted),
   );
 
   @override

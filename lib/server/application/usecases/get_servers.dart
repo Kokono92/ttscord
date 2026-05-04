@@ -1,5 +1,5 @@
-import 'package:ttscord/common/datamodel/channel.dart';
-import 'package:ttscord/common/datamodel/user.dart';
+import 'package:ttscord/common/domain/datamodel/channel.dart';
+import 'package:ttscord/common/domain/datamodel/user.dart';
 import 'package:ttscord/server/domain/datamodel/channel_category.dart';
 import 'package:ttscord/server/domain/datamodel/server.dart';
 

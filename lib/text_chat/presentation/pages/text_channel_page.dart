@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:ttscord/common/datamodel/channel.dart';
+import 'package:ttscord/common/domain/datamodel/channel.dart';
 import 'package:ttscord/text_chat/presentation/widgets/text_chat_scroll_view.dart';
 
 class TextChannelPage extends StatelessWidget {
