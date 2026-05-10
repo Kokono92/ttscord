@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ttscord/router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,15 +11,18 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      themeMode: ThemeMode.dark,
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-          brightness: Brightness.dark,
-          primary: Colors.indigoAccent,
+    return ProviderScope(
+      child: MaterialApp.router(
+        routerConfig: router,
+        themeMode: ThemeMode.dark,
+        darkTheme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue,
+            brightness: Brightness.dark,
+            primary: Colors.indigoAccent,
+            onPrimary: Colors.white,
+          ),
         ),
       ),
     );

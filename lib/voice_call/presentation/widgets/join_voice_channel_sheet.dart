@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:ttscord/common/domain/datamodel/channel.dart';
 import 'package:ttscord/common/presentation/datamodel/conversation_target.dart';
+import 'package:ttscord/common/presentation/widgets/user_indicator.dart';
 import 'package:ttscord/voice_call/presentation/pages/voice_call_page.dart';
 import 'package:ttscord/voice_call/presentation/widgets/buttons.dart';
 
@@ -75,23 +76,17 @@ class _VoiceChannelParticipantsIndicator extends StatelessWidget {
         color: Theme.of(context).colorScheme.surfaceContainerHigh,
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        spacing: 4,
+        mainAxisAlignment: MainAxisAlignment.end,
+        spacing: 0,
         children: [
-          for (final (i, user) in channel.joiningUsers.indexed)
+          for (final (i, user) in channel.joiningUsers.indexed) ...[
+            if (i > 0) Divider(indent: 60, height: 0),
+
             Padding(
               padding: EdgeInsetsGeometry.all(12),
-              child: Row(
-                spacing: 16,
-                children: [
-                  SizedBox(width: 36, child: CircleAvatar()),
-                  Text(user.name),
-                  Spacer(),
-                  if (user.isMicMuted) Icon(Icons.mic),
-                  if (user.isSpeakerMuted) Icon(Icons.headset_off),
-                ],
-              ),
+              child: UserIndicator(user, avatarSize: 36),
             ),
+          ],
         ],
       ),
     );

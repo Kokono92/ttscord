@@ -14,7 +14,9 @@
                 "--web-hostname",
                 "192.168.0.10",
                 "--web-port",
-                "51083"
+                "51083",
+                "--dart-define-from-file",
+                "config.json"
             ]
         },
         {

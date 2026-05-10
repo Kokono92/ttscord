@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:ttscord/common/domain/datamodel/channel.dart';
+import 'package:ttscord/common/presentation/widgets/user_indicator.dart';
 import 'package:ttscord/voice_call/presentation/widgets/join_voice_channel_sheet.dart';
 import 'package:ttscord/text_chat/presentation/pages/text_channel_page.dart';
 import 'package:ttscord/common/domain/datamodel/user.dart';
@@ -73,7 +74,8 @@ class ChannelTile extends StatelessWidget {
               children: [
                 if (channel.type == ChannelType.voice)
                   //for (user in channel.)
-                  for (User user in channel.joiningUsers) _UserIndicator(user),
+                  for (User user in channel.joiningUsers)
+                    UserIndicator(user, avatarSize: 20),
               ],
             ),
           ),
@@ -89,26 +91,5 @@ class ChannelTile extends StatelessWidget {
       case ChannelType.voice:
         return Icon(Icons.volume_up, size: 20);
     }
-  }
-}
-
-class _UserIndicator extends StatelessWidget {
-  final User user;
-
-  const _UserIndicator(this.user);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      spacing: 8,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(width: 20, child: CircleAvatar()),
-        Text(user.name),
-        Spacer(),
-        if (user.isMicMuted) Icon(Icons.mic, size: 16),
-        if (user.isSpeakerMuted) Icon(Icons.headset_off, size: 16),
-      ],
-    );
   }
 }

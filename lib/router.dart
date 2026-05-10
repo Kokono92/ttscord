@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:ttscord/uncategorized/presentation/pages/main_page.dart';
+import 'package:ttscord/editor/presentation/pages/editor_page.dart';
+import 'package:ttscord/home/presentation/pages/main_page.dart';
 import 'package:ttscord/registration/presentation/pages/register_page.dart';
 
 final router = GoRouter(
@@ -23,6 +24,7 @@ final router = GoRouter(
         }
       },
     ),
+    GoRoute(path: '/edit', builder: (context, state) => ScenarioEditorPage()),
   ],
   onException: (context, state, router) => router.go("/"),
 );

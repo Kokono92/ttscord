@@ -10,7 +10,7 @@ sealed class DestinationType {
 }
 
 class MessagesDestination extends DestinationType {
-  const MessagesDestination();
+  const MessagesDestination._();
   @override
   bool operator ==(Object other) {
     return other is MessagesDestination;
@@ -20,20 +20,20 @@ class MessagesDestination extends DestinationType {
   int get hashCode => -1;
 }
 
-const messagesDestination = MessagesDestination();
+const messagesDestination = MessagesDestination._();
 
-class AddServerDestination extends DestinationType {
-  const AddServerDestination();
+class AddContentsDestination extends DestinationType {
+  const AddContentsDestination._();
   @override
   bool operator ==(Object other) {
-    return other is AddServerDestination;
+    return other is AddContentsDestination;
   }
 
   @override
   int get hashCode => -2;
 }
 
-const addServerDestination = AddServerDestination();
+const addContentsDestination = AddContentsDestination._();
 
 class ServerDestination extends DestinationType {
   final Server server;
@@ -121,7 +121,7 @@ class LeftNavigation extends HookWidget {
             ),
 
           _buildLeftNavigationDestination(
-            destination: addServerDestination,
+            destination: addContentsDestination,
             previousSelectedDestination: previousSelectedDestination,
             controller: controller,
             contentBuilder:
@@ -322,12 +322,10 @@ class SelectionIndicator extends AnimatedSelectDeselect {
   }) : width = widthFactor * size,
        height = heightFactor * size;
 
-  // Todo: implement animation
   @override
   Widget _buildAnimatedSelect(BuildContext context) =>
       _buildAnimatedIndicator(reverse: false);
 
-  // Todo: implement animation
   @override
   Widget _buildAnimatedDeselect(BuildContext context) =>
       _buildAnimatedIndicator(reverse: true);

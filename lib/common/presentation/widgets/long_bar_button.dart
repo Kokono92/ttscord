@@ -3,16 +3,27 @@ import 'package:flutter/material.dart';
 class LongBarButton extends StatelessWidget {
   final IconData iconData;
   final String text;
+  final ButtonStyle? style;
+  final VoidCallback? onPressed;
 
-  const LongBarButton({required this.iconData, required this.text, super.key});
+  const LongBarButton({
+    required this.iconData,
+    required this.text,
+    required this.onPressed,
+    this.style,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) => FilledButton(
-    onPressed: () {},
-    style: FilledButton.styleFrom(
-      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-      foregroundColor: Colors.grey,
-    ),
+    onPressed: onPressed,
+    style:
+        style ??
+        FilledButton.styleFrom(
+          backgroundColor:
+              Theme.of(context).colorScheme.surfaceContainerHighest,
+          foregroundColor: Theme.of(context).colorScheme.onSurface,
+        ),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

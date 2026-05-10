@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:ttscord/common/domain/datamodel/channel.dart';
 import 'package:ttscord/server/domain/datamodel/channel_category.dart';
 import 'package:ttscord/server/domain/datamodel/server.dart';
 import 'package:ttscord/server/presentation/widgets/channel_category_view.dart';
-import 'package:ttscord/uncategorized/presentation/widgets/content_region.dart';
-import 'package:ttscord/uncategorized/presentation/widgets/long_bar_button.dart';
+import 'package:ttscord/home/presentation/widgets/content_region.dart';
+import 'package:ttscord/common/presentation/widgets/long_bar_button.dart';
 
 // TODO: Padding/Spacingの設計を見直す
 // TODO: 鯖アイコンを押したらアクティブなチャンネルが開く
@@ -25,7 +24,11 @@ class ServerRegion extends HookWidget {
         children: [
           Padding(
             padding: EdgeInsets.only(top: 10, bottom: 15, left: 30, right: 30),
-            child: LongBarButton(iconData: Icons.search, text: "検索"),
+            child: LongBarButton(
+              iconData: Icons.search,
+              text: "検索",
+              onPressed: () {},
+            ),
           ),
           Divider(),
 
