@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:ttscord/common/domain/datamodel/channel.dart';
-import 'package:ttscord/common/presentation/widgets/user_indicator.dart';
+import 'package:ttscord/core/domain/datamodel/channel.dart';
+import 'package:ttscord/core/presentation/widgets/user_indicator.dart';
 import 'package:ttscord/voice_call/presentation/widgets/join_voice_channel_sheet.dart';
 import 'package:ttscord/text_chat/presentation/pages/text_channel_page.dart';
-import 'package:ttscord/common/domain/datamodel/user.dart';
+import 'package:ttscord/core/domain/datamodel/character_profile.dart';
 
 class ChannelTile extends StatelessWidget {
   final Channel channel;
@@ -74,7 +74,7 @@ class ChannelTile extends StatelessWidget {
               children: [
                 if (channel.type == ChannelType.voice)
                   //for (user in channel.)
-                  for (User user in channel.joiningUsers)
+                  for (CharacterProfile user in channel.joiningUsers)
                     UserIndicator(user, avatarSize: 20),
               ],
             ),

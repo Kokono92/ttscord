@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:ttscord/common/application/provider/scenario_sources_provider.dart';
+import 'package:ttscord/core/application/provider/scenario_sources_provider.dart';
 import 'package:ttscord/home/presentation/widgets/content_region.dart';
 import 'package:ttscord/registration/application/providers/default_origin_provider.dart';
 import 'package:http/http.dart' as http;
@@ -110,7 +110,9 @@ class AddContentsRegion extends HookConsumerWidget {
 extension UriReachabilityExt on Uri {
   Future<bool> isReachable() async {
     try {
-      final response = await http.get(this).timeout(const Duration(seconds: 5));
+      final response = await http
+          .head(this)
+          .timeout(const Duration(seconds: 5));
 
       return response.statusCode >= 200 && response.statusCode < 400;
     } catch (_) {

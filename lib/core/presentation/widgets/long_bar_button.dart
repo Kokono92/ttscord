@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LongBarButton extends StatelessWidget {
-  final IconData iconData;
+  final IconData? iconData;
   final String text;
   final ButtonStyle? style;
   final VoidCallback? onPressed;
@@ -27,7 +27,7 @@ class LongBarButton extends StatelessWidget {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(iconData, size: 22),
+        if (iconData != null) Icon(iconData, size: 22),
         Padding(
           padding: EdgeInsets.all(4),
           child: Text(text, style: Theme.of(context).textTheme.bodyLarge),

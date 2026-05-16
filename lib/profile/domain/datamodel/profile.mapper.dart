@@ -15,7 +15,7 @@ class ProfileMapper extends ClassMapperBase<Profile> {
   static ProfileMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = ProfileMapper._());
-      UserMapper.ensureInitialized();
+      CharacterProfileMapper.ensureInitialized();
       ScenarioMapper.ensureInitialized();
     }
     return _instance!;
@@ -30,8 +30,8 @@ class ProfileMapper extends ClassMapperBase<Profile> {
     _$displayName,
     opt: true,
   );
-  static List<User> _$friends(Profile v) => v.friends;
-  static const Field<Profile, List<User>> _f$friends = Field(
+  static List<CharacterProfile> _$friends(Profile v) => v.friends;
+  static const Field<Profile, List<CharacterProfile>> _f$friends = Field(
     'friends',
     _$friends,
   );
@@ -113,12 +113,17 @@ extension ProfileValueCopy<$R, $Out> on ObjectCopyWith<$R, Profile, $Out> {
 
 abstract class ProfileCopyWith<$R, $In extends Profile, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  ListCopyWith<$R, User, UserCopyWith<$R, User, User>> get friends;
+  ListCopyWith<
+    $R,
+    CharacterProfile,
+    CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile>
+  >
+  get friends;
   ListCopyWith<$R, Scenario, ScenarioCopyWith<$R, Scenario, Scenario>>
   get scenarios;
   $R call({
     String? displayName,
-    List<User>? friends,
+    List<CharacterProfile>? friends,
     List<Scenario>? scenarios,
   });
   ProfileCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
@@ -133,12 +138,16 @@ class _ProfileCopyWithImpl<$R, $Out>
   late final ClassMapperBase<Profile> $mapper =
       ProfileMapper.ensureInitialized();
   @override
-  ListCopyWith<$R, User, UserCopyWith<$R, User, User>> get friends =>
-      ListCopyWith(
-        $value.friends,
-        (v, t) => v.copyWith.$chain(t),
-        (v) => call(friends: v),
-      );
+  ListCopyWith<
+    $R,
+    CharacterProfile,
+    CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile>
+  >
+  get friends => ListCopyWith(
+    $value.friends,
+    (v, t) => v.copyWith.$chain(t),
+    (v) => call(friends: v),
+  );
   @override
   ListCopyWith<$R, Scenario, ScenarioCopyWith<$R, Scenario, Scenario>>
   get scenarios => ListCopyWith(
@@ -149,7 +158,7 @@ class _ProfileCopyWithImpl<$R, $Out>
   @override
   $R call({
     Object? displayName = $none,
-    List<User>? friends,
+    List<CharacterProfile>? friends,
     List<Scenario>? scenarios,
   }) => $apply(
     FieldCopyWithData({

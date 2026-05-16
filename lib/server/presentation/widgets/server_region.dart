@@ -4,7 +4,7 @@ import 'package:ttscord/server/domain/datamodel/channel_category.dart';
 import 'package:ttscord/server/domain/datamodel/server.dart';
 import 'package:ttscord/server/presentation/widgets/channel_category_view.dart';
 import 'package:ttscord/home/presentation/widgets/content_region.dart';
-import 'package:ttscord/common/presentation/widgets/long_bar_button.dart';
+import 'package:ttscord/core/presentation/widgets/long_bar_button.dart';
 
 // TODO: Padding/Spacingの設計を見直す
 // TODO: 鯖アイコンを押したらアクティブなチャンネルが開く

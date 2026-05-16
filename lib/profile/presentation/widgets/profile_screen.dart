@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:ttscord/common/presentation/widgets/long_bar_button.dart';
+import 'package:ttscord/core/presentation/widgets/long_bar_button.dart';
 import 'package:ttscord/profile/presentation/widgets/avater_on_banner.dart';
 import 'package:ttscord/profile/presentation/widgets/dlc_tab_view.dart';
 import 'package:ttscord/profile/presentation/widgets/main_tab_view.dart';

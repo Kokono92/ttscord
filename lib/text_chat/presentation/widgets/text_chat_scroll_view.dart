@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ttscord/common/domain/datamodel/channel.dart';
+import 'package:ttscord/core/domain/datamodel/channel.dart';
 import 'package:ttscord/text_chat/domain/datamodel/chat_message.dart';
 import 'package:ttscord/text_chat/application/usecases/get_messages.dart';
 

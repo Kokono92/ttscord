@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ttscord/common/presentation/datamodel/conversation_target.dart';
+import 'package:ttscord/core/presentation/datamodel/conversation_target.dart';
 import 'package:ttscord/voice_call/presentation/widgets/buttons.dart';
 
 class VoiceCallPage extends StatelessWidget {

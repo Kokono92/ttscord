@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:ttscord/common/domain/datamodel/channel.dart';
-import 'package:ttscord/common/presentation/datamodel/conversation_target.dart';
-import 'package:ttscord/common/presentation/widgets/user_indicator.dart';
+import 'package:ttscord/core/domain/datamodel/channel.dart';
+import 'package:ttscord/core/presentation/datamodel/conversation_target.dart';
+import 'package:ttscord/core/presentation/widgets/user_indicator.dart';
 import 'package:ttscord/voice_call/presentation/pages/voice_call_page.dart';
 import 'package:ttscord/voice_call/presentation/widgets/buttons.dart';
 

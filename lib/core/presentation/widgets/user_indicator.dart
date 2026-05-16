@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ttscord/common/domain/datamodel/user.dart';
+import 'package:ttscord/core/domain/datamodel/character_profile.dart';
 
 class UserIndicator extends StatelessWidget {
-  final User user;
+  final CharacterProfile user;
   final double avatarSize;
 
   const UserIndicator(this.user, {required this.avatarSize, super.key});

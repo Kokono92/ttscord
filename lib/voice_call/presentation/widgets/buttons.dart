@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:ttscord/common/presentation/datamodel/conversation_target.dart';
+import 'package:ttscord/core/presentation/datamodel/conversation_target.dart';
 import 'package:ttscord/text_chat/presentation/widgets/text_chat_sheet.dart';
 import 'package:ttscord/utility/extensions.dart';
 

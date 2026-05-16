@@ -1,5 +1,5 @@
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:ttscord/common/domain/datamodel/user.dart';
+import 'package:ttscord/core/domain/datamodel/character_profile.dart';
 
 part 'channel.mapper.dart';
 
@@ -10,7 +10,7 @@ class Channel with ChannelMappable {
   final String name;
   final ChannelType type;
   final int? categoryId;
-  final List<User> joiningUsers;
+  final List<CharacterProfile> joiningUsers;
 
   const Channel({
     required this.name,

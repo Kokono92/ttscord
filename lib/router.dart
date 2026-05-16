@@ -4,6 +4,7 @@ import 'package:ttscord/home/presentation/pages/main_page.dart';
 import 'package:ttscord/registration/presentation/pages/register_page.dart';
 
 final router = GoRouter(
+  initialLocation: '/',
   routes: [
     GoRoute(path: '/', builder: (context, state) => MainPage()),
     GoRoute(
@@ -19,7 +20,7 @@ final router = GoRouter(
             itemType: itemType,
             id: state.uri.queryParameters[key]!,
           );
-        } catch (e) {
+        } on StateError catch (_) {
           return RegisterErrorPage();
         }
       },

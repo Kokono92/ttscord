@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:ttscord/home/presentation/pages/main_page.dart';
 import 'package:ttscord/home/presentation/widgets/content_region.dart';
-import 'package:ttscord/common/presentation/widgets/long_bar_button.dart';
+import 'package:ttscord/core/presentation/widgets/long_bar_button.dart';
 import 'package:ttscord/home/presentation/widgets/left_navigation.dart';
 
 class MessageRegion extends StatelessWidget {

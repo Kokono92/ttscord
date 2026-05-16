@@ -19,6 +19,11 @@ class ScenarioSourcesNotifier extends AsyncNotifier<ScenarioSources> {
     _persistToLocalStorage();
   }
 
+  Future<void> remove(Uri source) async {
+    await update((current) => {...current..remove(source)});
+    _persistToLocalStorage();
+  }
+
   // TODO: infra/repoなのでは
   Future<ScenarioSources> _retrieveFromLocalStorage() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();

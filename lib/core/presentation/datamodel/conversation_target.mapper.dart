@@ -216,7 +216,7 @@ class UserConversationTargetMapper
     if (_instance == null) {
       MapperContainer.globals.use(_instance = UserConversationTargetMapper._());
       ConversationTargetMapper.ensureInitialized();
-      UserMapper.ensureInitialized();
+      CharacterProfileMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -224,8 +224,8 @@ class UserConversationTargetMapper
   @override
   final String id = 'UserConversationTarget';
 
-  static User _$user(UserConversationTarget v) => v.user;
-  static const Field<UserConversationTarget, User> _f$user = Field(
+  static CharacterProfile _$user(UserConversationTarget v) => v.user;
+  static const Field<UserConversationTarget, CharacterProfile> _f$user = Field(
     'user',
     _$user,
   );
@@ -307,9 +307,9 @@ abstract class UserConversationTargetCopyWith<
   $Out
 >
     implements ConversationTargetCopyWith<$R, $In, $Out> {
-  UserCopyWith<$R, User, User> get user;
+  CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile> get user;
   @override
-  $R call({User? user});
+  $R call({CharacterProfile? user});
   UserConversationTargetCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   );
@@ -325,10 +325,10 @@ class _UserConversationTargetCopyWithImpl<$R, $Out>
   late final ClassMapperBase<UserConversationTarget> $mapper =
       UserConversationTargetMapper.ensureInitialized();
   @override
-  UserCopyWith<$R, User, User> get user =>
+  CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile> get user =>
       $value.user.copyWith.$chain((v) => call(user: v));
   @override
-  $R call({User? user}) =>
+  $R call({CharacterProfile? user}) =>
       $apply(FieldCopyWithData({if (user != null) #user: user}));
   @override
   UserConversationTarget $make(CopyWithData data) =>

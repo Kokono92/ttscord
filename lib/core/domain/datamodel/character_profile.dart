@@ -1,15 +1,15 @@
 import 'package:dart_mappable/dart_mappable.dart';
 
-part 'user.mapper.dart';
+part 'character_profile.mapper.dart';
 
 @MappableClass()
-class User with UserMappable {
+class CharacterProfile with CharacterProfileMappable {
   final String name;
   final String? iconPath;
   final bool isMicMuted;
   final bool isSpeakerMuted;
 
-  const User({
+  const CharacterProfile({
     required this.name,
     this.iconPath,
     this.isMicMuted = false,

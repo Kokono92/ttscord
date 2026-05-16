@@ -15,7 +15,7 @@ class ChannelMapper extends ClassMapperBase<Channel> {
   static ChannelMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = ChannelMapper._());
-      UserMapper.ensureInitialized();
+      CharacterProfileMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -33,8 +33,8 @@ class ChannelMapper extends ClassMapperBase<Channel> {
     _$categoryId,
     opt: true,
   );
-  static List<User> _$joiningUsers(Channel v) => v.joiningUsers;
-  static const Field<Channel, List<User>> _f$joiningUsers = Field(
+  static List<CharacterProfile> _$joiningUsers(Channel v) => v.joiningUsers;
+  static const Field<Channel, List<CharacterProfile>> _f$joiningUsers = Field(
     'joiningUsers',
     _$joiningUsers,
     opt: true,
@@ -115,12 +115,17 @@ extension ChannelValueCopy<$R, $Out> on ObjectCopyWith<$R, Channel, $Out> {
 
 abstract class ChannelCopyWith<$R, $In extends Channel, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  ListCopyWith<$R, User, UserCopyWith<$R, User, User>> get joiningUsers;
+  ListCopyWith<
+    $R,
+    CharacterProfile,
+    CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile>
+  >
+  get joiningUsers;
   $R call({
     String? name,
     ChannelType? type,
     int? categoryId,
-    List<User>? joiningUsers,
+    List<CharacterProfile>? joiningUsers,
   });
   ChannelCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
@@ -134,18 +139,22 @@ class _ChannelCopyWithImpl<$R, $Out>
   late final ClassMapperBase<Channel> $mapper =
       ChannelMapper.ensureInitialized();
   @override
-  ListCopyWith<$R, User, UserCopyWith<$R, User, User>> get joiningUsers =>
-      ListCopyWith(
-        $value.joiningUsers,
-        (v, t) => v.copyWith.$chain(t),
-        (v) => call(joiningUsers: v),
-      );
+  ListCopyWith<
+    $R,
+    CharacterProfile,
+    CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile>
+  >
+  get joiningUsers => ListCopyWith(
+    $value.joiningUsers,
+    (v, t) => v.copyWith.$chain(t),
+    (v) => call(joiningUsers: v),
+  );
   @override
   $R call({
     String? name,
     ChannelType? type,
     Object? categoryId = $none,
-    List<User>? joiningUsers,
+    List<CharacterProfile>? joiningUsers,
   }) => $apply(
     FieldCopyWithData({
       if (name != null) #name: name,
