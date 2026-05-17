@@ -1,6 +1,6 @@
 import 'package:dart_mappable/dart_mappable.dart';
 import 'package:ttscord/core/domain/datamodel/character_profile.dart';
-import 'package:ttscord/playback/domain/datamodel/scenario.dart';
+import 'package:ttscord/core/domain/datamodel/scenario.dart';
 
 part 'profile.mapper.dart';
 

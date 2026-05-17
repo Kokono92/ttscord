@@ -1,6 +1,6 @@
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:ttscord/playback/domain/datamodel/branch_conditions.dart';
-import 'package:ttscord/playback/domain/datamodel/references.dart';
+import 'package:ttscord/core/domain/datamodel/branch_conditions.dart';
+import 'package:ttscord/core/domain/datamodel/references.dart';
 
 part 'actions.mapper.dart';
 

@@ -1,5 +1,5 @@
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:ttscord/playback/domain/datamodel/references.dart';
+import 'package:ttscord/core/domain/datamodel/references.dart';
 
 part 'triggers.mapper.dart';
 

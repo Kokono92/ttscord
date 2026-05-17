@@ -1,5 +1,6 @@
 import 'package:ttscord/core/domain/datamodel/channel.dart';
 import 'package:ttscord/core/domain/datamodel/character_profile.dart';
+import 'package:ttscord/core/domain/datamodel/image_source.dart';
 import 'package:ttscord/server/domain/datamodel/channel_category.dart';
 import 'package:ttscord/server/domain/datamodel/server.dart';
 
@@ -37,10 +38,7 @@ List<Server> getServers() {
         Channel(
           type: ChannelType.voice,
           name: "🎉🎂お誕生日様会場🍰🎊",
-          joiningUsers: [
-            CharacterProfile(name: "本日の主役👑"),
-            CharacterProfile(name: "顔と声が良い"),
-          ],
+          joiningUsers: [],
         ),
       ],
     ),

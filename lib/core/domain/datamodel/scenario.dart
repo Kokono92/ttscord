@@ -1,7 +1,7 @@
 import 'package:dart_mappable/dart_mappable.dart';
-import 'package:ttscord/playback/domain/datamodel/actions.dart';
-import 'package:ttscord/playback/domain/datamodel/references.dart';
-import 'package:ttscord/playback/domain/datamodel/triggers.dart';
+import 'package:ttscord/core/domain/datamodel/actions.dart';
+import 'package:ttscord/core/domain/datamodel/references.dart';
+import 'package:ttscord/core/domain/datamodel/triggers.dart';
 
 part 'scenario.mapper.dart';
 

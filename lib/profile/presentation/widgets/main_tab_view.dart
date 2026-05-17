@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:ttscord/profile/presentation/pages/friends_page.dart';
 
 class MainTabView extends StatelessWidget {
   const MainTabView({super.key});
@@ -18,8 +20,17 @@ class FriendsCard extends StatelessWidget with CardPadding {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(padding: padding, child: Row(children: [Text("フレンド")])),
+    return InkWell(
+      onTap:
+          () => Navigator.of(context).push(
+            PageTransition(
+              type: PageTransitionType.rightToLeft,
+              child: FriendsPage(),
+            ),
+          ),
+      child: Card(
+        child: Padding(padding: padding, child: Row(children: [Text("フレンド")])),
+      ),
     );
   }
 }

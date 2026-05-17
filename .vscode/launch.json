@@ -10,6 +10,7 @@
             "type": "dart",
             "args": [
                 "-d",
+                "edge",
                 "web-server",
                 "--web-hostname",
                 "192.168.0.10",

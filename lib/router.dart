@@ -25,7 +25,7 @@ final router = GoRouter(
         }
       },
     ),
-    GoRoute(path: '/edit', builder: (context, state) => ScenarioEditorPage()),
+    GoRoute(path: '/edit', builder: (context, state) => EditorPage()),
   ],
   onException: (context, state, router) => router.go("/"),
 );

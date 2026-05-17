@@ -11,23 +11,15 @@ class DlcTabView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sources = ref.watch(scenarioSourcesProvider);
-    debugPrint(sources.toString());
 
     return Column(
       children: [
         Expanded(
-          child: sources.when(
-            data:
-                (sources) => ScenarioListView(
-                  sources,
-                  onDelete:
-                      (source) => ref
-                          .read(scenarioSourcesProvider.notifier)
-                          .remove(source),
-                ),
-            loading: () => CircularProgressIndicator(),
-            error: (_, _) => Container(),
-            skipError: true,
+          child: ScenarioListView(
+            sources.value ?? {},
+            onDelete:
+                (source) =>
+                    ref.read(scenarioSourcesProvider.notifier).remove(source),
           ),
         ),
       ],
