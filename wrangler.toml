@@ -1,4 +1,4 @@
-name = "my-worker"
+name = 'ttscord'
 compatibility_date = "2026-05-19"
 
 [assets]
