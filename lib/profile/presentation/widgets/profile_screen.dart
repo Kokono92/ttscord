@@ -15,6 +15,7 @@ class ProfileScreen extends StatelessWidget {
     return Column(
       spacing: 16.0,
       children: [
+        // TODO: ここでorigin != httpが爆誕する
         AvatarOnBanner(),
         _EditButton(),
         Expanded(child: ProfileTabView()),

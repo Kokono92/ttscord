@@ -10,6 +10,7 @@ import 'package:ttscord/home/presentation/pages/main_page.dart';
 import 'package:ttscord/home/presentation/widgets/content_region.dart';
 import 'package:ttscord/core/presentation/widgets/long_bar_button.dart';
 import 'package:ttscord/home/presentation/widgets/left_navigation.dart';
+import 'package:ttscord/profile/presentation/widgets/profile_sheet.dart';
 
 class MessageRegion extends StatelessWidget {
   const MessageRegion({super.key});
@@ -74,6 +75,7 @@ class _FriendSquareCard extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1.0,
       child: InkWell(
+        onTap: () => showProfileSheet(context, originatedProfile),
         child: Card(
           color: Theme.of(context).colorScheme.surfaceContainerHighest,
           child: Padding(

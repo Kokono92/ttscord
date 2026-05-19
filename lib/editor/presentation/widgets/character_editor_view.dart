@@ -13,6 +13,7 @@ class CharacterEditorView extends HookWidget {
     final character = CharacterProfile(
       name: "akari",
       iconSource: ImageSource(identifier: "akari_icon", format: "jpg"),
+      bannarColor: Colors.blue,
     );
 
     final jsonText = character.toJson();

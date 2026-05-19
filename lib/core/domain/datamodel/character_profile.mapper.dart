@@ -65,6 +65,7 @@ class CharacterProfileMapper extends ClassMapperBase<CharacterProfile> {
   static CharacterProfileMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = CharacterProfileMapper._());
+      MapperContainer.globals.useAll([ColorMapper()]);
       ImageSourceMapper.ensureInitialized();
       OnlineStatusMapper.ensureInitialized();
     }
@@ -80,6 +81,12 @@ class CharacterProfileMapper extends ClassMapperBase<CharacterProfile> {
   static const Field<CharacterProfile, ImageSource> _f$iconSource = Field(
     'iconSource',
     _$iconSource,
+  );
+  static Color? _$bannarColor(CharacterProfile v) => v.bannarColor;
+  static const Field<CharacterProfile, Color> _f$bannarColor = Field(
+    'bannarColor',
+    _$bannarColor,
+    opt: true,
   );
   static bool _$isMicMuted(CharacterProfile v) => v.isMicMuted;
   static const Field<CharacterProfile, bool> _f$isMicMuted = Field(
@@ -107,6 +114,7 @@ class CharacterProfileMapper extends ClassMapperBase<CharacterProfile> {
   final MappableFields<CharacterProfile> fields = const {
     #name: _f$name,
     #iconSource: _f$iconSource,
+    #bannarColor: _f$bannarColor,
     #isMicMuted: _f$isMicMuted,
     #isSpeakerMuted: _f$isSpeakerMuted,
     #status: _f$status,
@@ -116,6 +124,7 @@ class CharacterProfileMapper extends ClassMapperBase<CharacterProfile> {
     return CharacterProfile(
       name: data.dec(_f$name),
       iconSource: data.dec(_f$iconSource),
+      bannarColor: data.dec(_f$bannarColor),
       isMicMuted: data.dec(_f$isMicMuted),
       isSpeakerMuted: data.dec(_f$isSpeakerMuted),
       status: data.dec(_f$status),
@@ -188,6 +197,7 @@ abstract class CharacterProfileCopyWith<$R, $In extends CharacterProfile, $Out>
   $R call({
     String? name,
     ImageSource? iconSource,
+    Color? bannarColor,
     bool? isMicMuted,
     bool? isSpeakerMuted,
     OnlineStatus? status,
@@ -212,6 +222,7 @@ class _CharacterProfileCopyWithImpl<$R, $Out>
   $R call({
     String? name,
     ImageSource? iconSource,
+    Object? bannarColor = $none,
     bool? isMicMuted,
     bool? isSpeakerMuted,
     OnlineStatus? status,
@@ -219,6 +230,7 @@ class _CharacterProfileCopyWithImpl<$R, $Out>
     FieldCopyWithData({
       if (name != null) #name: name,
       if (iconSource != null) #iconSource: iconSource,
+      if (bannarColor != $none) #bannarColor: bannarColor,
       if (isMicMuted != null) #isMicMuted: isMicMuted,
       if (isSpeakerMuted != null) #isSpeakerMuted: isSpeakerMuted,
       if (status != null) #status: status,
@@ -228,6 +240,7 @@ class _CharacterProfileCopyWithImpl<$R, $Out>
   CharacterProfile $make(CopyWithData data) => CharacterProfile(
     name: data.get(#name, or: $value.name),
     iconSource: data.get(#iconSource, or: $value.iconSource),
+    bannarColor: data.get(#bannarColor, or: $value.bannarColor),
     isMicMuted: data.get(#isMicMuted, or: $value.isMicMuted),
     isSpeakerMuted: data.get(#isSpeakerMuted, or: $value.isSpeakerMuted),
     status: data.get(#status, or: $value.status),

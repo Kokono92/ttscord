@@ -12,8 +12,9 @@ import 'package:ttscord/core/presentation/provider/ui_image_provider.dart';
 
 class CharacterAvatar extends ConsumerWidget {
   final WithOrigin<ImageSource> originatedSource;
+  final double? radius;
 
-  const CharacterAvatar(this.originatedSource, {super.key});
+  const CharacterAvatar(this.originatedSource, {this.radius, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,6 +22,7 @@ class CharacterAvatar extends ConsumerWidget {
 
     return (image?.maybeData != null)
         ? CircleAvatar(
+          radius: radius,
           backgroundImage:
               ref.watch(uiImageProvider((image as Data<ui.Image>).data)).value,
         )
