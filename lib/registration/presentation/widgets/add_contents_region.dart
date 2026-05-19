@@ -6,6 +6,7 @@ import 'package:ttscord/core/application/provider/scenario_sources_provider.dart
 import 'package:ttscord/home/presentation/widgets/content_region.dart';
 import 'package:ttscord/registration/application/providers/default_origin_provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:ttscord/registration/application/usecases/resolve_code.dart';
 
 class AddContentsRegion extends HookConsumerWidget {
   const AddContentsRegion({super.key});
@@ -98,22 +99,6 @@ class AddContentsRegion extends HookConsumerWidget {
   }
 }
 
-WithOrigin<ScenarioIdentifier>? resolveCode(
-  String code,
-  String? defaultOrigin,
-) {
-  final uri = Uri.parse(code);
-  if (uri.hasScheme && {"http", "https"}.contains(uri.scheme)) {
-    return WithOrigin(
-      content: uri.pathSegments.last.withoutExtension,
-      origin: Uri.parse(uri.origin),
-    );
-  } else if (defaultOrigin != null) {
-    return WithOrigin(content: code, origin: Uri.parse(defaultOrigin));
-  }
-  return null;
-}
-
 // TODO: マシな実装にする
 extension ReachabilityExt on WithOrigin<ScenarioIdentifier> {
   Future<bool> isReachable() async {
@@ -127,8 +112,4 @@ extension ReachabilityExt on WithOrigin<ScenarioIdentifier> {
       return false;
     }
   }
-}
-
-extension RemoveExt on String {
-  String get withoutExtension => (split(".")..removeLast()).join(".");
 }

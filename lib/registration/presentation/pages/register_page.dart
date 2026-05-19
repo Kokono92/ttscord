@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:ttscord/core/application/provider/scenario_provider.dart';
+import 'package:ttscord/core/application/provider/scenario_sources_provider.dart';
+import 'package:ttscord/core/domain/datamodel/scenario.dart';
 import 'package:ttscord/core/presentation/widgets/long_bar_button.dart';
+import 'package:ttscord/registration/application/providers/default_origin_provider.dart';
+import 'package:ttscord/registration/application/usecases/resolve_code.dart';
 
 enum ItemType {
   scenario;
@@ -8,24 +15,51 @@ enum ItemType {
   static bool containsName(String name) => values.asNameMap().containsKey(name);
 }
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends ConsumerWidget {
   final ItemType itemType;
-  final String id;
+  final String code;
 
-  const RegisterPage({required this.itemType, required this.id, super.key});
+  const RegisterPage({required this.itemType, required this.code, super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (itemType != ItemType.scenario) fallback(context);
+
+    final scenarioSource = resolveCode(code, ref.read(defaultOriginProvider));
+    if (scenarioSource == null) fallback(context);
+
+    final scenario =
+        ref.watch(scenarioProvider(scenarioSource!)).value?.content;
+
     return _RegisterPageBase(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        spacing: 8,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // ServerIcon here,
-          Text("作者"),
-          Text("シナリオ名", style: Theme.of(context).textTheme.headlineLarge),
+          Text("Author: ${scenario?.author ?? ""}"),
+          Text(
+            scenario?.title ?? "",
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
+          SizedBox(height: 32),
           LongBarButton(
-            onPressed: () {},
+            onPressed:
+                () => () async {
+                  ref
+                      .read(scenarioSourcesProvider.notifier)
+                      .add(scenarioSource);
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("シナリオが追加されました"),
+                      duration: Duration(seconds: 5),
+                    ),
+                  );
+                  context.go('/');
+                }(),
+
             iconData: null,
             text: "シナリオを登録する",
             style: FilledButton.styleFrom(),
@@ -38,6 +72,21 @@ class RegisterPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void fallback(BuildContext context) {
+    Navigator.of(context).pushReplacement(
+      PageRouteBuilder(pageBuilder: (_, _, _) => RegisterErrorPage()),
+    );
+  }
+
+  Future<void> register(BuildContext context, Function action) async {
+    await action();
+    if (context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("シナリオが追加されました"), duration: Duration(seconds: 5)),
+      );
+    }
   }
 }
 
@@ -68,18 +117,21 @@ class _RegisterPageBase extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surfaceContainerLowest,
-      body: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsetsGeometry.all(64),
-        child: AspectRatio(
-          aspectRatio: 1.0,
-          child: Container(
-            width: double.maxFinite,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Theme.of(context).colorScheme.surfaceContainer,
+      body: Center(
+        child: Container(
+          alignment: Alignment.center,
+          padding: EdgeInsetsGeometry.all(32),
+          constraints: BoxConstraints(maxWidth: 560),
+          child: AspectRatio(
+            aspectRatio: 1.0,
+            child: Container(
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Theme.of(context).colorScheme.surfaceContainer,
+              ),
+              child: Padding(padding: EdgeInsetsGeometry.all(32), child: child),
             ),
-            child: Padding(padding: EdgeInsetsGeometry.all(32), child: child),
           ),
         ),
       ),

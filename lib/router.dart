@@ -18,7 +18,7 @@ final router = GoRouter(
           final itemType = ItemType.values.byName(key);
           return RegisterPage(
             itemType: itemType,
-            id: state.uri.queryParameters[key]!,
+            code: state.uri.queryParameters[key]!,
           );
         } on StateError catch (_) {
           return RegisterErrorPage();
