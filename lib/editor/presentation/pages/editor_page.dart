@@ -8,6 +8,7 @@ import 'package:ttscord/core/domain/datamodel/scenario.dart';
 import 'package:ttscord/core/domain/datamodel/triggers.dart';
 import 'package:ttscord/editor/presentation/widgets/character_editor_view.dart';
 import 'package:ttscord/editor/presentation/widgets/scenario_editor_view.dart';
+import 'package:ttscord/editor/presentation/widgets/server_editor_view.dart';
 
 class EditorPage extends HookWidget {
   const EditorPage({super.key});
@@ -31,7 +32,7 @@ class EditorPage extends HookWidget {
         body: TabBarView(
           children: [
             ScenarioEditorView(),
-            ScenarioEditorView(),
+            ServerEditorView(),
             CharacterEditorView(),
           ],
         ),

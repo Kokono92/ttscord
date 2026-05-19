@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ttscord/core/application/dataclasses/with_origin.dart';
 import 'package:ttscord/core/application/provider/scenario_sources_provider.dart';
 import 'package:ttscord/home/presentation/widgets/content_region.dart';
 import 'package:ttscord/registration/application/providers/default_origin_provider.dart';
@@ -95,28 +96,39 @@ class AddContentsRegion extends HookConsumerWidget {
       ),
     );
   }
-
-  Uri? resolveCode(String code, String? defaultOrigin) {
-    final uri = Uri.tryParse(code);
-    return uri != null && uri.hasScheme
-        ? uri
-        : defaultOrigin != null
-        ? Uri.parse(defaultOrigin).resolve("scenarios/$code.json")
-        : null;
-  }
 }
 
-// presentation内ではないのだろうなとは思う
-extension UriReachabilityExt on Uri {
+WithOrigin<ScenarioIdentifier>? resolveCode(
+  String code,
+  String? defaultOrigin,
+) {
+  final uri = Uri.parse(code);
+  if (uri.hasScheme && {"http", "https"}.contains(uri.scheme)) {
+    return WithOrigin(
+      content: uri.pathSegments.last.withoutExtension,
+      origin: Uri.parse(uri.origin),
+    );
+  } else if (defaultOrigin != null) {
+    return WithOrigin(content: code, origin: Uri.parse(defaultOrigin));
+  }
+  return null;
+}
+
+// TODO: マシな実装にする
+extension ReachabilityExt on WithOrigin<ScenarioIdentifier> {
   Future<bool> isReachable() async {
     try {
-      final response = await http
-          .head(this)
-          .timeout(const Duration(seconds: 5));
+      // 絶対にここでresolveすべきではないんですけど
+      final uri = origin.resolve("scenarios/$content.json");
+      final response = await http.head(uri).timeout(const Duration(seconds: 5));
 
       return response.statusCode >= 200 && response.statusCode < 400;
     } catch (_) {
       return false;
     }
   }
+}
+
+extension RemoveExt on String {
+  String get withoutExtension => (split(".")..removeLast()).join(".");
 }

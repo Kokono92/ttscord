@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:ttscord/core/application/provider/shared_preferences_provider.dart';
 import 'package:ttscord/core/presentation/widgets/long_bar_button.dart';
 import 'package:ttscord/profile/presentation/widgets/avater_on_banner.dart';
 import 'package:ttscord/profile/presentation/widgets/dlc_tab_view.dart';
@@ -60,6 +62,8 @@ class ProfileTabView extends HookWidget {
             children: tabViewPairs.map((e) => e.view).toList(),
           ),
         ),
+        Spacer(),
+        _ClearPreferenceButton(),
       ],
     );
   }
@@ -75,6 +79,18 @@ class _EditButton extends StatelessWidget {
       iconData: Icons.edit,
       text: "プロフィール編集",
       onPressed: () {},
+    );
+  }
+}
+
+class _ClearPreferenceButton extends ConsumerWidget {
+  const _ClearPreferenceButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return OutlinedButton(
+      onPressed: () => ref.read(sharedPreferencesProvider.notifier).clear(),
+      child: Text("設定を削除する"),
     );
   }
 }

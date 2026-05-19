@@ -8,6 +8,52 @@
 
 part of 'channel.dart';
 
+class ChannelTypeMapper extends EnumMapper<ChannelType> {
+  ChannelTypeMapper._();
+
+  static ChannelTypeMapper? _instance;
+  static ChannelTypeMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = ChannelTypeMapper._());
+    }
+    return _instance!;
+  }
+
+  static ChannelType fromValue(dynamic value) {
+    ensureInitialized();
+    return MapperContainer.globals.fromValue(value);
+  }
+
+  @override
+  ChannelType decode(dynamic value) {
+    switch (value) {
+      case r'text':
+        return ChannelType.text;
+      case r'voice':
+        return ChannelType.voice;
+      default:
+        throw MapperException.unknownEnumValue(value);
+    }
+  }
+
+  @override
+  dynamic encode(ChannelType self) {
+    switch (self) {
+      case ChannelType.text:
+        return r'text';
+      case ChannelType.voice:
+        return r'voice';
+    }
+  }
+}
+
+extension ChannelTypeMapperExtension on ChannelType {
+  String toValue() {
+    ChannelTypeMapper.ensureInitialized();
+    return MapperContainer.globals.toValue<ChannelType>(this) as String;
+  }
+}
+
 class ChannelMapper extends ClassMapperBase<Channel> {
   ChannelMapper._();
 
@@ -15,6 +61,7 @@ class ChannelMapper extends ClassMapperBase<Channel> {
   static ChannelMapper ensureInitialized() {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = ChannelMapper._());
+      ChannelTypeMapper.ensureInitialized();
       CharacterProfileMapper.ensureInitialized();
     }
     return _instance!;

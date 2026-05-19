@@ -18,7 +18,10 @@ class ScenarioEditorView extends HookWidget {
         title: "akari00",
         author: "kokoNotes",
         description: "サンプルシナリオ",
-        triggers: [JoinDmCallTrigger(akari)],
+        triggers: [
+          JoinDmCallTrigger(akari),
+          JoinVoiceChannelTrigger(ChannelReference("chatting_club", "作業通話")),
+        ],
         flow: [Subroutine("morningScenario")],
 
         subroutines: {

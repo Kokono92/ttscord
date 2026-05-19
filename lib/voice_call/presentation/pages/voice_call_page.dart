@@ -1,14 +1,30 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ttscord/core/presentation/datamodel/conversation_target.dart';
+import 'package:ttscord/core/presentation/provider/audio_player_provider.dart';
 import 'package:ttscord/voice_call/presentation/widgets/buttons.dart';
 
-class VoiceCallPage extends StatelessWidget {
+class VoiceCallPage extends HookConsumerWidget {
   final ConversationTarget target;
 
   const VoiceCallPage(this.target, {super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final player = ref.read(audioPlayerProvider);
+
+    useEffect(() {
+      () async {
+        await (
+          player.setSource(AssetSource('audio/ringtone.mp3')),
+          player.setReleaseMode(ReleaseMode.loop),
+        ).wait;
+        await player.resume();
+      }();
+    }, []);
+
     return Scaffold(
       appBar: _buildAppBar(context),
       body: Padding(

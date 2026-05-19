@@ -7,8 +7,7 @@ import 'package:ttscord/server/domain/datamodel/server.dart';
 List<Server> getServers() {
   return [
     Server(
-      name: 'おしゃべり部',
-      id: 1,
+      displayName: 'おしゃべり部',
       iconPath: null,
       categories: [
         ChannelCategory(name: "業務連絡", id: 1),
@@ -29,17 +28,26 @@ List<Server> getServers() {
         Channel(type: ChannelType.text, name: "機材とか", categoryId: 2),
         Channel(type: ChannelType.text, name: "素材", categoryId: 2),
         Channel(type: ChannelType.voice, name: "駆け込み寺", categoryId: 2),
-        Channel(type: ChannelType.voice, name: "作業通話", categoryId: 2),
+        Channel(
+          type: ChannelType.voice,
+          name: "作業通話",
+          categoryId: 2,
+          joiningUsers: [
+            CharacterProfile(
+              name: "うちやで",
+              iconSource: ImageSource(identifier: "akane_icon", format: "jpg"),
+            ),
+            CharacterProfile(
+              name: "あかり（not ちゃん）先輩",
+              iconSource: ImageSource(identifier: "akari_icon", format: "jpg"),
+            ),
+          ],
+        ),
         Channel(type: ChannelType.text, name: "コスメ・ファッション", categoryId: 3),
         Channel(type: ChannelType.text, name: "うまいめし", categoryId: 3),
         Channel(type: ChannelType.text, name: "CPK!観た人！！！！！！", categoryId: 3),
         Channel(type: ChannelType.text, name: "同時視聴 (調整)", categoryId: 3),
         Channel(type: ChannelType.voice, name: "同時視聴 (会場)", categoryId: 3),
-        Channel(
-          type: ChannelType.voice,
-          name: "🎉🎂お誕生日様会場🍰🎊",
-          joiningUsers: [],
-        ),
       ],
     ),
   ];

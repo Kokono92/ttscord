@@ -5,6 +5,9 @@ part 'data_or_error.mapper.dart';
 @MappableClass()
 sealed class DataOrError<DataT> with DataOrErrorMappable {
   const DataOrError();
+
+  DataT? get maybeData =>
+      this is Data<DataT> ? (this as Data<DataT>).data : null;
 }
 
 @MappableClass()

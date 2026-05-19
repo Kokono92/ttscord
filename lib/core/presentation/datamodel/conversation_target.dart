@@ -27,11 +27,11 @@ final class ChannelConversationTarget extends ConversationTarget
 }
 
 @MappableClass()
-final class UserConversationTarget extends ConversationTarget
-    with UserConversationTargetMappable {
+final class CharacterConversationTarget extends ConversationTarget
+    with CharacterConversationTargetMappable {
   final CharacterProfile user;
 
-  const UserConversationTarget(this.user);
+  const CharacterConversationTarget(this.user);
 
   @override
   String get title => user.name;

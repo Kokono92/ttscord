@@ -16,7 +16,7 @@ class ConversationTargetMapper extends ClassMapperBase<ConversationTarget> {
     if (_instance == null) {
       MapperContainer.globals.use(_instance = ConversationTargetMapper._());
       ChannelConversationTargetMapper.ensureInitialized();
-      UserConversationTargetMapper.ensureInitialized();
+      CharacterConversationTargetMapper.ensureInitialized();
     }
     return _instance!;
   }
@@ -207,14 +207,16 @@ class _ChannelConversationTargetCopyWithImpl<$R, $Out>
       _ChannelConversationTargetCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 
-class UserConversationTargetMapper
-    extends ClassMapperBase<UserConversationTarget> {
-  UserConversationTargetMapper._();
+class CharacterConversationTargetMapper
+    extends ClassMapperBase<CharacterConversationTarget> {
+  CharacterConversationTargetMapper._();
 
-  static UserConversationTargetMapper? _instance;
-  static UserConversationTargetMapper ensureInitialized() {
+  static CharacterConversationTargetMapper? _instance;
+  static CharacterConversationTargetMapper ensureInitialized() {
     if (_instance == null) {
-      MapperContainer.globals.use(_instance = UserConversationTargetMapper._());
+      MapperContainer.globals.use(
+        _instance = CharacterConversationTargetMapper._(),
+      );
       ConversationTargetMapper.ensureInitialized();
       CharacterProfileMapper.ensureInitialized();
     }
@@ -222,108 +224,120 @@ class UserConversationTargetMapper
   }
 
   @override
-  final String id = 'UserConversationTarget';
+  final String id = 'CharacterConversationTarget';
 
-  static CharacterProfile _$user(UserConversationTarget v) => v.user;
-  static const Field<UserConversationTarget, CharacterProfile> _f$user = Field(
-    'user',
-    _$user,
-  );
+  static CharacterProfile _$user(CharacterConversationTarget v) => v.user;
+  static const Field<CharacterConversationTarget, CharacterProfile> _f$user =
+      Field('user', _$user);
 
   @override
-  final MappableFields<UserConversationTarget> fields = const {#user: _f$user};
+  final MappableFields<CharacterConversationTarget> fields = const {
+    #user: _f$user,
+  };
 
-  static UserConversationTarget _instantiate(DecodingData data) {
-    return UserConversationTarget(data.dec(_f$user));
+  static CharacterConversationTarget _instantiate(DecodingData data) {
+    return CharacterConversationTarget(data.dec(_f$user));
   }
 
   @override
   final Function instantiate = _instantiate;
 
-  static UserConversationTarget fromMap(Map<String, dynamic> map) {
-    return ensureInitialized().decodeMap<UserConversationTarget>(map);
+  static CharacterConversationTarget fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<CharacterConversationTarget>(map);
   }
 
-  static UserConversationTarget fromJson(String json) {
-    return ensureInitialized().decodeJson<UserConversationTarget>(json);
+  static CharacterConversationTarget fromJson(String json) {
+    return ensureInitialized().decodeJson<CharacterConversationTarget>(json);
   }
 }
 
-mixin UserConversationTargetMappable {
+mixin CharacterConversationTargetMappable {
   String toJson() {
-    return UserConversationTargetMapper.ensureInitialized()
-        .encodeJson<UserConversationTarget>(this as UserConversationTarget);
+    return CharacterConversationTargetMapper.ensureInitialized()
+        .encodeJson<CharacterConversationTarget>(
+          this as CharacterConversationTarget,
+        );
   }
 
   Map<String, dynamic> toMap() {
-    return UserConversationTargetMapper.ensureInitialized()
-        .encodeMap<UserConversationTarget>(this as UserConversationTarget);
+    return CharacterConversationTargetMapper.ensureInitialized()
+        .encodeMap<CharacterConversationTarget>(
+          this as CharacterConversationTarget,
+        );
   }
 
-  UserConversationTargetCopyWith<
-    UserConversationTarget,
-    UserConversationTarget,
-    UserConversationTarget
+  CharacterConversationTargetCopyWith<
+    CharacterConversationTarget,
+    CharacterConversationTarget,
+    CharacterConversationTarget
   >
   get copyWith =>
-      _UserConversationTargetCopyWithImpl<
-        UserConversationTarget,
-        UserConversationTarget
-      >(this as UserConversationTarget, $identity, $identity);
+      _CharacterConversationTargetCopyWithImpl<
+        CharacterConversationTarget,
+        CharacterConversationTarget
+      >(this as CharacterConversationTarget, $identity, $identity);
   @override
   String toString() {
-    return UserConversationTargetMapper.ensureInitialized().stringifyValue(
-      this as UserConversationTarget,
+    return CharacterConversationTargetMapper.ensureInitialized().stringifyValue(
+      this as CharacterConversationTarget,
     );
   }
 
   @override
   bool operator ==(Object other) {
-    return UserConversationTargetMapper.ensureInitialized().equalsValue(
-      this as UserConversationTarget,
+    return CharacterConversationTargetMapper.ensureInitialized().equalsValue(
+      this as CharacterConversationTarget,
       other,
     );
   }
 
   @override
   int get hashCode {
-    return UserConversationTargetMapper.ensureInitialized().hashValue(
-      this as UserConversationTarget,
+    return CharacterConversationTargetMapper.ensureInitialized().hashValue(
+      this as CharacterConversationTarget,
     );
   }
 }
 
-extension UserConversationTargetValueCopy<$R, $Out>
-    on ObjectCopyWith<$R, UserConversationTarget, $Out> {
-  UserConversationTargetCopyWith<$R, UserConversationTarget, $Out>
-  get $asUserConversationTarget => $base.as(
-    (v, t, t2) => _UserConversationTargetCopyWithImpl<$R, $Out>(v, t, t2),
+extension CharacterConversationTargetValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, CharacterConversationTarget, $Out> {
+  CharacterConversationTargetCopyWith<$R, CharacterConversationTarget, $Out>
+  get $asCharacterConversationTarget => $base.as(
+    (v, t, t2) => _CharacterConversationTargetCopyWithImpl<$R, $Out>(v, t, t2),
   );
 }
 
-abstract class UserConversationTargetCopyWith<
+abstract class CharacterConversationTargetCopyWith<
   $R,
-  $In extends UserConversationTarget,
+  $In extends CharacterConversationTarget,
   $Out
 >
     implements ConversationTargetCopyWith<$R, $In, $Out> {
   CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile> get user;
   @override
   $R call({CharacterProfile? user});
-  UserConversationTargetCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+  CharacterConversationTargetCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   );
 }
 
-class _UserConversationTargetCopyWithImpl<$R, $Out>
-    extends ClassCopyWithBase<$R, UserConversationTarget, $Out>
+class _CharacterConversationTargetCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, CharacterConversationTarget, $Out>
     implements
-        UserConversationTargetCopyWith<$R, UserConversationTarget, $Out> {
-  _UserConversationTargetCopyWithImpl(super.value, super.then, super.then2);
+        CharacterConversationTargetCopyWith<
+          $R,
+          CharacterConversationTarget,
+          $Out
+        > {
+  _CharacterConversationTargetCopyWithImpl(
+    super.value,
+    super.then,
+    super.then2,
+  );
 
   @override
-  late final ClassMapperBase<UserConversationTarget> $mapper =
-      UserConversationTargetMapper.ensureInitialized();
+  late final ClassMapperBase<CharacterConversationTarget> $mapper =
+      CharacterConversationTargetMapper.ensureInitialized();
   @override
   CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile> get user =>
       $value.user.copyWith.$chain((v) => call(user: v));
@@ -331,12 +345,12 @@ class _UserConversationTargetCopyWithImpl<$R, $Out>
   $R call({CharacterProfile? user}) =>
       $apply(FieldCopyWithData({if (user != null) #user: user}));
   @override
-  UserConversationTarget $make(CopyWithData data) =>
-      UserConversationTarget(data.get(#user, or: $value.user));
+  CharacterConversationTarget $make(CopyWithData data) =>
+      CharacterConversationTarget(data.get(#user, or: $value.user));
 
   @override
-  UserConversationTargetCopyWith<$R2, UserConversationTarget, $Out2>
+  CharacterConversationTargetCopyWith<$R2, CharacterConversationTarget, $Out2>
   $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _UserConversationTargetCopyWithImpl<$R2, $Out2>($value, $cast, t);
+      _CharacterConversationTargetCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
 

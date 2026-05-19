@@ -1,6 +1,9 @@
+import 'dart:ui_web';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:ttscord/core/application/dataclasses/with_origin.dart';
 import 'package:ttscord/core/domain/datamodel/channel.dart';
 import 'package:ttscord/core/presentation/datamodel/conversation_target.dart';
 import 'package:ttscord/core/presentation/widgets/user_indicator.dart';
@@ -84,7 +87,14 @@ class _VoiceChannelParticipantsIndicator extends StatelessWidget {
 
             Padding(
               padding: EdgeInsetsGeometry.all(12),
-              child: UserIndicator(user, avatarSize: 36),
+              // TODO:モックを直す
+              child: UserIndicator(
+                WithOrigin(
+                  origin: Uri.parse("https://ttscord.storage.kokonotes.net/"),
+                  content: user,
+                ),
+                avatarSize: 36,
+              ),
             ),
           ],
         ],

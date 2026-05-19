@@ -6,15 +6,13 @@ part 'server.mapper.dart';
 
 @MappableClass()
 class Server with ServerMappable {
-  final String name;
-  final int id;
+  final String displayName;
   final String? iconPath;
   final List<ChannelCategory> categories;
   final List<Channel> channels;
 
   const Server({
-    required this.name,
-    required this.id,
+    required this.displayName,
     this.iconPath,
     required this.categories,
     required this.channels,

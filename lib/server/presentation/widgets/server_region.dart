@@ -18,7 +18,7 @@ class ServerRegion extends HookWidget {
   Widget build(BuildContext context) {
     final selectedChannel = useState(-1);
     return ContentRegion(
-      title: server.name,
+      title: server.displayName,
       child: Column(
         spacing: 4,
         children: [

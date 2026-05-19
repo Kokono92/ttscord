@@ -112,7 +112,7 @@ class LeftNavigation extends HookWidget {
                   (color) =>
                       server.iconPath == null
                           ? Text(
-                            server.name,
+                            server.displayName,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(color: color),

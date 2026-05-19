@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:ttscord/core/application/dataclasses/with_origin.dart';
 import 'package:ttscord/core/domain/datamodel/channel.dart';
 import 'package:ttscord/core/presentation/widgets/user_indicator.dart';
 import 'package:ttscord/voice_call/presentation/widgets/join_voice_channel_sheet.dart';
@@ -75,7 +76,16 @@ class ChannelTile extends StatelessWidget {
                 if (channel.type == ChannelType.voice)
                   //for (user in channel.)
                   for (CharacterProfile user in channel.joiningUsers)
-                    UserIndicator(user, avatarSize: 20),
+                    // TODO: モックを直す
+                    UserIndicator(
+                      WithOrigin(
+                        origin: Uri.parse(
+                          "https://ttscord.storage.kokonotes.net/",
+                        ),
+                        content: user,
+                      ),
+                      avatarSize: 20,
+                    ),
               ],
             ),
           ),

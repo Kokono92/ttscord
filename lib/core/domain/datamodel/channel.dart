@@ -3,6 +3,7 @@ import 'package:ttscord/core/domain/datamodel/character_profile.dart';
 
 part 'channel.mapper.dart';
 
+@MappableEnum()
 enum ChannelType { text, voice }
 
 @MappableClass()

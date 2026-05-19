@@ -24,10 +24,11 @@ class ServerMapper extends ClassMapperBase<Server> {
   @override
   final String id = 'Server';
 
-  static String _$name(Server v) => v.name;
-  static const Field<Server, String> _f$name = Field('name', _$name);
-  static int _$id(Server v) => v.id;
-  static const Field<Server, int> _f$id = Field('id', _$id);
+  static String _$displayName(Server v) => v.displayName;
+  static const Field<Server, String> _f$displayName = Field(
+    'displayName',
+    _$displayName,
+  );
   static String? _$iconPath(Server v) => v.iconPath;
   static const Field<Server, String> _f$iconPath = Field(
     'iconPath',
@@ -47,8 +48,7 @@ class ServerMapper extends ClassMapperBase<Server> {
 
   @override
   final MappableFields<Server> fields = const {
-    #name: _f$name,
-    #id: _f$id,
+    #displayName: _f$displayName,
     #iconPath: _f$iconPath,
     #categories: _f$categories,
     #channels: _f$channels,
@@ -56,8 +56,7 @@ class ServerMapper extends ClassMapperBase<Server> {
 
   static Server _instantiate(DecodingData data) {
     return Server(
-      name: data.dec(_f$name),
-      id: data.dec(_f$id),
+      displayName: data.dec(_f$displayName),
       iconPath: data.dec(_f$iconPath),
       categories: data.dec(_f$categories),
       channels: data.dec(_f$channels),
@@ -118,8 +117,7 @@ abstract class ServerCopyWith<$R, $In extends Server, $Out>
   get categories;
   ListCopyWith<$R, Channel, ChannelCopyWith<$R, Channel, Channel>> get channels;
   $R call({
-    String? name,
-    int? id,
+    String? displayName,
     String? iconPath,
     List<ChannelCategory>? categories,
     List<Channel>? channels,
@@ -153,15 +151,13 @@ class _ServerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Server, $Out>
   );
   @override
   $R call({
-    String? name,
-    int? id,
+    String? displayName,
     Object? iconPath = $none,
     List<ChannelCategory>? categories,
     List<Channel>? channels,
   }) => $apply(
     FieldCopyWithData({
-      if (name != null) #name: name,
-      if (id != null) #id: id,
+      if (displayName != null) #displayName: displayName,
       if (iconPath != $none) #iconPath: iconPath,
       if (categories != null) #categories: categories,
       if (channels != null) #channels: channels,
@@ -169,8 +165,7 @@ class _ServerCopyWithImpl<$R, $Out> extends ClassCopyWithBase<$R, Server, $Out>
   );
   @override
   Server $make(CopyWithData data) => Server(
-    name: data.get(#name, or: $value.name),
-    id: data.get(#id, or: $value.id),
+    displayName: data.get(#displayName, or: $value.displayName),
     iconPath: data.get(#iconPath, or: $value.iconPath),
     categories: data.get(#categories, or: $value.categories),
     channels: data.get(#channels, or: $value.channels),

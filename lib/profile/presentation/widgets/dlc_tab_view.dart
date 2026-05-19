@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:ttscord/core/application/dataclasses/with_origin.dart';
 import 'package:ttscord/core/application/provider/scenario_sources_provider.dart';
 import 'package:ttscord/home/presentation/pages/main_page.dart';
 import 'package:ttscord/home/presentation/widgets/left_navigation.dart';
@@ -29,7 +30,7 @@ class DlcTabView extends ConsumerWidget {
 
 class ScenarioListView extends StatelessWidget {
   final ScenarioSources sources;
-  final Function(Uri) onDelete;
+  final Function(WithOrigin<ScenarioIdentifier>) onDelete;
 
   const ScenarioListView(this.sources, {required this.onDelete, super.key});
 
@@ -50,7 +51,7 @@ class ScenarioListView extends StatelessWidget {
 }
 
 class ScenarioTile extends StatelessWidget {
-  final Uri source;
+  final WithOrigin<ScenarioIdentifier> source;
   final VoidCallback onDelete;
 
   const ScenarioTile(this.source, {required this.onDelete, super.key});
