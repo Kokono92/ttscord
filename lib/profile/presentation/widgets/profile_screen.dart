@@ -6,6 +6,7 @@ import 'package:ttscord/core/presentation/widgets/long_bar_button.dart';
 import 'package:ttscord/profile/presentation/widgets/avater_on_banner.dart';
 import 'package:ttscord/profile/presentation/widgets/dlc_tab_view.dart';
 import 'package:ttscord/profile/presentation/widgets/main_tab_view.dart';
+import 'package:ttscord/profile/presentation/widgets/profile_header.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -16,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
       spacing: 16.0,
       children: [
         // TODO: ここでorigin != httpが爆誕する
-        AvatarOnBanner(),
+        ProfileHeader(null),
         _EditButton(),
         Expanded(child: ProfileTabView()),
       ],

@@ -17,7 +17,7 @@ class AvatarOnBanner extends StatelessWidget {
     final profile = originatedProfile?.content;
 
     return Padding(
-      padding: EdgeInsetsGeometry.only(bottom: _avatarRadius * 1.5),
+      padding: EdgeInsetsGeometry.only(bottom: _avatarRadius),
       child: Stack(
         children: [
           ClipPath(
