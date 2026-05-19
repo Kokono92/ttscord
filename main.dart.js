@@ -98462,7 +98462,7 @@ A.aAs.prototype={
 $0(){return this.a.lA($.a6C().gN4(),t._V).O(0)},
 $S:0}
 A.aKW.prototype={
-$1(a){return null},
+$1(a){return"https://ttscord.storage.kokonotes.net/"},
 $S:695}
 A.CP.prototype={
 J(){return"ItemType."+this.b}}
