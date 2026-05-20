@@ -78,31 +78,40 @@ class _CallConfirmationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SimpleDialog(
-        title: Text(
-          "通話の準備はOK？",
-        ), //, style: Theme.of(context).textTheme.titleLarge),
-        children: [
-          Text("しっかり確認して、準備ができたら入りましょう。"),
-          LongBarButton(
-            onPressed:
-                () => Navigator.of(context).push(
-                  PageTransition(
-                    type: PageTransitionType.bottomToTop,
-                    child: VoiceCallPage(CharacterConversationTarget(profile)),
-                  ),
-                ),
-            iconData: null,
-            text: "通話を開始",
+    return SimpleDialog(
+      title: Center(
+        child: Text("通話の準備はOK？"),
+      ), //, style: Theme.of(context).textTheme.titleLarge),
+      children: [
+        Padding(
+          padding: EdgeInsetsGeometry.symmetric(horizontal: 32),
+          child: Column(
+            spacing: 16,
+            children: [
+              Text("しっかり確認して、準備ができたら入りましょう。"),
+              LongBarButton(
+                style: FilledButton.styleFrom(backgroundColor: Colors.green),
+                onPressed:
+                    () => Navigator.of(context).push(
+                      PageTransition(
+                        type: PageTransitionType.bottomToTop,
+                        child: VoiceCallPage(
+                          CharacterConversationTarget(profile),
+                        ),
+                      ),
+                    ),
+                iconData: null,
+                text: "通話を開始",
+              ),
+              LongBarButton(
+                onPressed: () => Navigator.of(context).pop(),
+                iconData: null,
+                text: "キャンセル",
+              ),
+            ],
           ),
-          LongBarButton(
-            onPressed: () => Navigator.of(context).pop(),
-            iconData: null,
-            text: "キャンセル",
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
