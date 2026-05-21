@@ -6,8 +6,8 @@ import 'package:ttscord/core/application/dataclasses/with_origin.dart';
 import 'package:ttscord/core/domain/datamodel/character_profile.dart';
 import 'package:ttscord/core/presentation/datamodel/conversation_target.dart';
 import 'package:ttscord/core/presentation/widgets/long_bar_button.dart';
-import 'package:ttscord/profile/presentation/widgets/avater_on_banner.dart';
 import 'package:ttscord/profile/presentation/widgets/profile_header.dart';
+import 'package:ttscord/voice_call/application/providers/active_call_session_provider.dart';
 import 'package:ttscord/voice_call/presentation/pages/voice_call_page.dart';
 
 void showProfileSheet(
@@ -72,12 +72,12 @@ class ProfileSheet extends ConsumerWidget {
   }
 }
 
-class _CallConfirmationDialog extends StatelessWidget {
+class _CallConfirmationDialog extends ConsumerWidget {
   final CharacterProfile profile;
   const _CallConfirmationDialog(this.profile);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SimpleDialog(
       title: Center(
         child: Text("通話の準備はOK？"),
@@ -91,15 +91,15 @@ class _CallConfirmationDialog extends StatelessWidget {
               Text("しっかり確認して、準備ができたら入りましょう。"),
               LongBarButton(
                 style: FilledButton.styleFrom(backgroundColor: Colors.green),
-                onPressed:
-                    () => Navigator.of(context).push(
-                      PageTransition(
-                        type: PageTransitionType.bottomToTop,
-                        child: VoiceCallPage(
-                          CharacterConversationTarget(profile),
-                        ),
-                      ),
-                    ),
+                onPressed: () {
+                  Navigator.of(context).pop(); // dialog
+                  Navigator.of(context).pop(); // sheet
+                  ref
+                      .read(activeCallSessionProvider.notifier)
+                      .initiateCallSession(
+                        CharacterConversationTarget(profile),
+                      );
+                },
                 iconData: null,
                 text: "通話を開始",
               ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:ttscord/core/presentation/datamodel/conversation_target.dart';
 import 'package:ttscord/text_chat/presentation/widgets/text_chat_sheet.dart';
 import 'package:ttscord/utility/extensions.dart';
+import 'package:ttscord/voice_call/application/providers/active_call_session_provider.dart';
 
 mixin _IconStyle {
   ButtonStyle getStyle(context) => IconButton.styleFrom(
@@ -76,8 +78,27 @@ class HangUpButton extends StatelessWidget {
         backgroundColor: Colors.red,
         foregroundColor: Colors.white,
       ),
-      onPressed: () {},
+      onPressed: () => Navigator.of(context).pop(),
       icon: Icon(Icons.call_end),
+    );
+  }
+}
+
+class JoinVoiceChannelButton extends ConsumerWidget {
+  final ConversationTarget target;
+
+  const JoinVoiceChannelButton(this.target, {super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return FilledButton(
+      style: FilledButton.styleFrom(
+        backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+        minimumSize: Size(0, 48),
+      ),
+      onPressed: () => ref.read(activeCallSessionProvider.notifier),
+      child: Text("ボイスチャンネルに参加"),
     );
   }
 }

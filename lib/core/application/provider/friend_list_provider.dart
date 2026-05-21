@@ -13,7 +13,8 @@ final friendListProvider = Provider<List<WithOrigin<CharacterProfileOrError>>>((
 
   return extractReferences<CharacterReference>(
         scenarioSources,
-        (elem) => ref.watch(scenarioProvider(elem)).value,
+        (originatedSource) =>
+            ref.watch(scenarioProvider(originatedSource)).value,
       )
       .map((elem) {
         return ref

@@ -17,6 +17,8 @@ import 'package:ttscord/core/presentation/provider/ui_image_provider.dart';
 import 'package:ttscord/core/presentation/widgets/character_avatar.dart';
 import 'package:ttscord/home/presentation/pages/main_page.dart';
 import 'package:ttscord/home/presentation/widgets/left_navigation.dart';
+import 'package:ttscord/profile/presentation/widgets/profile_sheet.dart';
+import 'package:ttscord/voice_call/application/providers/active_call_session_provider.dart';
 import 'package:ttscord/voice_call/presentation/pages/voice_call_page.dart';
 import 'package:ttscord/voice_call/presentation/widgets/buttons.dart';
 
@@ -65,8 +67,11 @@ class _FriendListView extends ConsumerWidget {
     return ListView.builder(
       itemCount: friends.length,
       itemBuilder: (context, index) {
-        // TODO: InkWellにしてカードを出す
-        return FriendCard(friends[index]);
+        final originatedProfile = friends[index];
+        return InkWell(
+          onTap: () => showProfileSheet(context, originatedProfile),
+          child: FriendCard(originatedProfile),
+        );
       },
     );
   }
@@ -88,21 +93,31 @@ class FriendCard extends ConsumerWidget {
           CharacterAvatar(originatedProfile.propagate((e) => e.iconSource)),
           Text(profile.name),
           Spacer(),
-          IconButton(
-            // TODO:  本当はチャット画面を挟む
-            onPressed:
-                () => Navigator.of(context).push(
-                  PageTransition(
-                    type: PageTransitionType.bottomToTop,
-                    child: VoiceCallPage(CharacterConversationTarget(profile)),
-                  ),
-                ),
-            icon: Icon(PhosphorIconsFill.phoneCall),
-          ),
+          _DmCallIconButton(CharacterConversationTarget(profile)),
+
           // TODO: 遷移先の画面ちゃんとつくる
           //ShowTextChatButton(target),
         ],
       ),
+    );
+  }
+}
+
+class _DmCallIconButton extends ConsumerWidget {
+  final ConversationTarget target;
+
+  const _DmCallIconButton(this.target);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return IconButton(
+      // TODO:  本当はチャット画面を挟む
+      onPressed:
+          () => ref
+              .read(activeCallSessionProvider.notifier)
+              .initiateCallSession(target),
+
+      icon: Icon(PhosphorIconsFill.phoneCall),
     );
   }
 }

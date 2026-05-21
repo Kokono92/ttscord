@@ -29,13 +29,13 @@ final class ChannelConversationTarget extends ConversationTarget
 @MappableClass()
 final class CharacterConversationTarget extends ConversationTarget
     with CharacterConversationTargetMappable {
-  final CharacterProfile user;
+  final CharacterProfile profile;
 
-  const CharacterConversationTarget(this.user);
-
-  @override
-  String get title => user.name;
+  const CharacterConversationTarget(this.profile);
 
   @override
-  List<CharacterProfile> get participants => [user];
+  String get title => profile.name;
+
+  @override
+  List<CharacterProfile> get participants => [profile];
 }

@@ -124,23 +124,7 @@ class _ActionMenu extends StatelessWidget {
         spacing: 8,
         children: [
           DummyMicButton(),
-          Expanded(
-            child: FilledButton(
-              style: FilledButton.styleFrom(
-                backgroundColor: Colors.green,
-                foregroundColor: Colors.white,
-                minimumSize: Size(0, 48),
-              ),
-              onPressed:
-                  () => Navigator.of(context).push(
-                    PageTransition(
-                      type: PageTransitionType.bottomToTop,
-                      child: VoiceCallPage(target),
-                    ),
-                  ),
-              child: Text("ボイスチャンネルに参加"),
-            ),
-          ),
+          Expanded(child: JoinVoiceChannelButton(target)),
           ShowTextChatButton(target),
         ],
       ),

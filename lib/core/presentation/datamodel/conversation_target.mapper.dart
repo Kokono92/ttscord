@@ -226,17 +226,17 @@ class CharacterConversationTargetMapper
   @override
   final String id = 'CharacterConversationTarget';
 
-  static CharacterProfile _$user(CharacterConversationTarget v) => v.user;
-  static const Field<CharacterConversationTarget, CharacterProfile> _f$user =
-      Field('user', _$user);
+  static CharacterProfile _$profile(CharacterConversationTarget v) => v.profile;
+  static const Field<CharacterConversationTarget, CharacterProfile> _f$profile =
+      Field('profile', _$profile);
 
   @override
   final MappableFields<CharacterConversationTarget> fields = const {
-    #user: _f$user,
+    #profile: _f$profile,
   };
 
   static CharacterConversationTarget _instantiate(DecodingData data) {
-    return CharacterConversationTarget(data.dec(_f$user));
+    return CharacterConversationTarget(data.dec(_f$profile));
   }
 
   @override
@@ -313,9 +313,9 @@ abstract class CharacterConversationTargetCopyWith<
   $Out
 >
     implements ConversationTargetCopyWith<$R, $In, $Out> {
-  CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile> get user;
+  CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile> get profile;
   @override
-  $R call({CharacterProfile? user});
+  $R call({CharacterProfile? profile});
   CharacterConversationTargetCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
   );
@@ -339,14 +339,14 @@ class _CharacterConversationTargetCopyWithImpl<$R, $Out>
   late final ClassMapperBase<CharacterConversationTarget> $mapper =
       CharacterConversationTargetMapper.ensureInitialized();
   @override
-  CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile> get user =>
-      $value.user.copyWith.$chain((v) => call(user: v));
+  CharacterProfileCopyWith<$R, CharacterProfile, CharacterProfile>
+  get profile => $value.profile.copyWith.$chain((v) => call(profile: v));
   @override
-  $R call({CharacterProfile? user}) =>
-      $apply(FieldCopyWithData({if (user != null) #user: user}));
+  $R call({CharacterProfile? profile}) =>
+      $apply(FieldCopyWithData({if (profile != null) #profile: profile}));
   @override
   CharacterConversationTarget $make(CopyWithData data) =>
-      CharacterConversationTarget(data.get(#user, or: $value.user));
+      CharacterConversationTarget(data.get(#profile, or: $value.profile));
 
   @override
   CharacterConversationTargetCopyWith<$R2, CharacterConversationTarget, $Out2>
